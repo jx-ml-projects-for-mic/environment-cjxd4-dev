@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:cjxd4/adminUser:password
+  username: mic-jx-bot
+enableDocker: false
+pipelineUser:
+  email: mneale+jxbot@cloudbees.com
+  token: vault:cjxd4/pipelineUser:token
+  username: mic-jx-bot
+prow:
+  hmacToken: vault:cjxd4/prow:hmacToken

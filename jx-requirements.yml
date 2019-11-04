@@ -1,22 +1,53 @@
 autoUpdate:
   enabled: false
   schedule: ""
+bootConfigURL: https://github.com/cloudbees/cloudbees-jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: true
-  project: ""
   azure: {}
+  clusterName: cjxd4
+  environmentGitOwner: jx-ml-projects-for-mic
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: micprojects
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  zone: australia-southeast1-a
 environments:
-- key: dev
-- key: staging
-- key: production
+- ingress:
+    domain: 35.197.166.121.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+gitops: true
 ingress:
-  domain: ""
+  domain: 35.197.166.121.nip.io
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
@@ -24,16 +55,21 @@ ingress:
 kaniko: true
 secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
-    url: ""
+    url: gs://cjxd4-logs-79842806-737e-4465-ad51-19b81aad1baf
   reports:
     enabled: true
-    url: ""
+    url: gs://cjxd4-reports-593673c2-97f5-4196-9831-02006563b826
   repository:
     enabled: true
-    url: ""
+    url: gs://cjxd4-repository-3297d497-d7dc-43a6-a3bc-c55887317010
+vault: {}
+velero: {}
 versionStream:
-  ref: b335faf15fddb5863a7b5360b03f48b72fe69340 
+  ref: b335faf15fddb5863a7b5360b03f48b72fe69340
   url: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git
 webhook: prow
